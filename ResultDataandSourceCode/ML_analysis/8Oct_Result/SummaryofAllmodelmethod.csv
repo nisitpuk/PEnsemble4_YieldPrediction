@@ -1,0 +1,5 @@
+Model,R2_Feature Scaler,R2_Feature_SHAP,R2_Feature_Hyperparamer,R2_Ensemble,Model
+Huber,0.926222,0.926313,0.926266,0.924202,"Method1 Huber,M-estimators,Linear Regression,Ridge Regression"
+M-estimators,0.921954,0.924826,0.924030,0.924131,"Method2 Huber,M-estimators,Linear Regression"
+Linear Regression,0.904104,0.918302,0.918302,0.924017,"Method3 Huber,M-estimators,Ridge Regression"
+Ridge Regression,0.911118,0.916077,0.916892,0.925427,"Method4 Huber,M-estimators"

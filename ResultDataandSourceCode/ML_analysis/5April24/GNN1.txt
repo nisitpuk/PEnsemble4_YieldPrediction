@@ -1,0 +1,88 @@
+import torch
+import torch_geometric 
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression, Ridge, HuberRegressor, RANSACRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Load the dataset
+data = pd.read_csv("C:/Maize_Chainat_C/45Datapoint_Master/ML_analysis/7Oct_270Dataset/5VI_CD_CV_16ENV_270_01.csv")
+
+# Features based on SHAP Values
+X = data[['Cire_CD', 'NDRE_CD']]
+y = data['Seed']
+
+# Splitting the data
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
+X_test, X_val, y_test, y_val = train_test_split(X_temp, y_temp, test_size=2/3, random_state=42)
+
+# Feature Scaling
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+#######################################
+# Best hyperparameters obtained from previous runs
+best_params = {
+    "Huber": {'alpha': 1, 'epsilon': 1.0, 'max_iter': 100},
+    "M-estimators": {'min_samples': 0.6, 'stop_probability': 0.97},
+    "Linear Regression": {'fit_intercept': True},
+    "Ridge Regression": {'alpha': 0.615848211066026, 'fit_intercept': True, 'solver': 'sparse_cg'}
+}
+
+# Initialize models with default parameters
+default_models = {
+    "Huber": HuberRegressor(),
+    "M-estimators": RANSACRegressor(),
+    "Linear Regression": LinearRegression(),
+    "Ridge Regression": Ridge()
+}
+
+###########################################
+
+# Initialize models with best parameters
+tuned_models = {
+    "Huber": HuberRegressor(**best_params["Huber"]),
+    "M-estimators": RANSACRegressor(**best_params["M-estimators"]),
+    "Linear Regression": LinearRegression(**best_params["Linear Regression"]),
+    "Ridge Regression": Ridge(**best_params["Ridge Regression"])
+}
+
+# Define ensemble methods with weights
+ensemble_methods = {
+
+   "PEnsemble1": {"models": ["Huber", "M-estimators", "Linear Regression", "Ridge Regression"], "weights": [0.5, 0.3, 0.1, 0.1]},  #0.924202
+   "PEnsemble2": {"models": ["Huber", "M-estimators", "Linear Regression"], "weights": [0.45, 0.35, 0.2]}, #0.924131
+   "PEnsemble3": {"models": ["Huber", "M-estimators", "Ridge Regression"], "weights": [0.45, 0.35, 0.2]}, #0.924017
+    "PEnsemble4": {"models": ["Huber", "M-estimators"], "weights": [0.6, 0.4]} #0.925427
+
+}
+ 
+results = []
+
+# Compute weighted ensemble predictions
+for method, details in ensemble_methods.items():
+    predictions = np.zeros(X_test_scaled.shape[0])
+    for model_name, weight in zip(details["models"], details["weights"]):
+        model = tuned_models[model_name]
+        model.fit(X_train_scaled, y_train)
+        predictions += weight * model.predict(X_test_scaled)
+    
+    mae = mean_absolute_error(y_test, predictions)
+    mse = mean_squared_error(y_test, predictions)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_test, predictions)
+    
+    results.append({
+        "Method": method,
+        "Model": ", ".join(details["models"]),
+        "MAE": mae,
+        "MSE": mse,
+        "RMSE": rmse,
+        "R2": r2
+    })
+
+results_df = pd.DataFrame(results)
+print(results_df)

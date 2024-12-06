@@ -1,0 +1,7 @@
+Method,Model,MAE,MSE,RMSE,R2
+PEnsemble1,"Huber, M-estimators, Linear Regression, Ridge Regression",0.308433307,0.531333568,0.728926312,0.924202391
+PEnsemble2,"Huber, M-estimators, Linear Regression",0.308890253,0.531836063,0.729270912,0.924130707
+PEnsemble3,"Huber, M-estimators, Ridge Regression",0.311676967,0.532634751,0.7298183,0.92401677
+PEnsemble4,"Huber, M-estimators",0.291894272,0.522752568,0.723016299,0.925426517
+GCN,Graph Convolutional Network,2.209819,7.784366,2.790047693,-0.057997109
+GAT,Graph Attention Network ,2.3844757,9.266993,3.044173544,-0.25950541

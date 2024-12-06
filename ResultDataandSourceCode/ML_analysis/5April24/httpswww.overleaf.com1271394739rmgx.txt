@@ -1,0 +1,17 @@
+https://www.overleaf.com/1271394739rmgxnkfcmmjb#143898
+
+https://docs.google.com/document/d/12tpbB_tReGhM-KcHlCWqsXQ_GRjuajRsEmGfd28ZyJM/edit?usp=sharing
+
+Jan
+=AVERAGE(B2:B5005)
+Feb
+=AVERAGE(B5007:B12721)
+Mar
+=AVERAGE(B12724:B21334)
+
+E
+D8617
+
+=AVERAGE(Weather_Jan!E2:E8617)
+=AVERAGE(Weather_Jan!E8618:E16859)
+=AVERAGE(Weather_Jan!E16860:E26095)

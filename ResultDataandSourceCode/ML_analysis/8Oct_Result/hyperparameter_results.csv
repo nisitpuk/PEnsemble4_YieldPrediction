@@ -1,0 +1,10 @@
+﻿Model,Parameter,Value,R^2 Score
+Huber,alpha,1,0.9263
+Huber,epsilon,1,0.9263
+Huber,max_iter,100,0.9263
+M-estimators,min_samples,0.7,0.924
+M-estimators,stop_probability,0.96,0.924
+Linear Regression,fit_intercept,TRUE,0.9183
+Ridge Regression,alpha,0.615848211,0.9169
+Ridge Regression,fit_intercept,TRUE,0.9169
+Ridge Regression,solver,lsqr,0.9169

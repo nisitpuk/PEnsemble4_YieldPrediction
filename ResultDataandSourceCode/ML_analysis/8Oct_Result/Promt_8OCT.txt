@@ -1,0 +1,140 @@
+
+Huber,M-estimators,Linear Regression,Ridge Regression
+Huber,M-estimators,Linear Regression
+Huber,M-estimators,Ridge Regression
+Huber,M-estimators
+
+
+
+Method 1: Using Huber, M-estimators (RANSAC), Linear Regression, and Ridge Regression.
+P_Ensemble1 = (w1*P_Huber + w2*P_M-estimators" + w3*P_Linear Regression+ w4*P_Ridge Regression) / (w1 + w2 + w3 + w4)
+Method 2: Using Huber, M-estimators (RANSAC), and Linear Regression.
+P_Ensemble2 = (w1*P_Huber + w2*P_M-estimators" + w3*P_Linear Regression) / (w1 + w2 + w3)
+Method 3: Using Huber, M-estimators (RANSAC), and Ridge Regression.
+P_Ensemble3 = (w1*P_Huber + w2*P_M-estimators" + w3*P_Ridge Regression) / (w1 + w2 + w3)
+Method 4: Using Huber and M-estimators (RANSAC).
+P_Ensemble4 = (w1*P_Huber + w2*P_M-estimators" ) / (w1 + w2)
+
+
+
+
+six distinct methods of feature engineering
+1. RandomForest Importance
+2. Recursive Feature Elimination (RFE) with Cross-Validation
+3. Permutation Importance
+4. LASSO Regression Coefficients
+5. Correlation Coefficient
+6. SHAP Values
+
+Method 1: Combine "Huber", "M-estimators", "Linear Regression", and "Ridge Regression".
+Method 2: Combine "Huber", "M-estimators", and "Linear Regression".
+Method 3: Combine "Huber", "M-estimators", and "Ridge Regression".
+Method 4: Combine "Huber" and "M-estimators".
+
+    CatBoost
+    Decision Tree
+    ElasticNet
+    Gradient Boosting
+    Huber
+    KNN
+    Lasso Regression
+    Linear Regression
+    M-estimators
+    Passive Aggressive
+    Random Forest
+    Ridge Regression
+   SVR
+   XGBoost
+
+
+Huber 
+M-estimators
+Ridge
+
+1. Correlation Coefficient
+2. Permutation Importance
+3. LASSO Regression
+4. SHAP Values
+5. RandomForest Importance
+6. RFE with Cross-Validation
+
+what difference of Feature Selection and Feature Importance
+
+Case 1 [Huber,M-estimators,Linear Regression,Ridge Regression]
+Case 2 [Huber,M-estimators,Linear Regression]
+Case 3 [Huber,M-estimators,Ridge Regression]
+Case 4 [Huber,M-estimators]
+
+
+Data Splitting:
+
+
+1. Preparing dataset to predict data with cleaning data, remove null value and missing data.
+2. Feature engineering with 6 Feature Importance techniques with
+    "All Features": list(data.drop(columns=["Seed"]).columns),
+    "RandomForest Importance": ['Cire_CD', 'NDRE_CD', 'Cigr_CD', 'EVI2_CD', 'NDVI_CD'],
+    "RFE with CV": ['Cire_CD', 'NDRE_CD', 'Cigr_CD', 'EVI2_CD', 'NDVI_CV'],
+    "Permutation Importance": ['Cire_CD', 'NDRE_CD', 'Cigr_CD', 'EVI2_CD'],
+    "LASSO Coefficients": ['Cigr_CD', 'Cigr_CV', 'SoilHumi', 'Wind speed'],
+    "Correlation Coefficient": ['NDRE_CD', 'Evapotranspiration', 'Humidity', 'Temperature', 'EC'],
+    "SHAP Values": ['Cire_CD', 'NDRE_CD']
+3. Using 6 Feature importance techniques to predict data with 14 ML model # Models Definition
+models = [
+    ("CatBoost", CatBoostRegressor(verbose=0, random_state=42)),
+    ("Decision Tree", DecisionTreeRegressor(random_state=42)),
+    ("ElasticNet", ElasticNet()),
+    ("Gradient Boosting", GradientBoostingRegressor(random_state=42)),
+    ("Huber", HuberRegressor(max_iter=10000)),
+    ("KNN", KNeighborsRegressor()),
+    ("Lasso Regression", Lasso()),
+    ("Linear Regression", LinearRegression()),
+    ("M-estimators", RANSACRegressor(random_state=42)),
+    ("Passive Aggressive", PassiveAggressiveRegressor(random_state=42)),
+    ("Random Forest", RandomForestRegressor(random_state=42)),
+    ("Ridge Regression", Ridge()),
+    ("SVR", SVR()),
+    ("XGBoost", XGBRegressor(random_state=42))
+]
+4. Hyper parameter to fine tune model of ["Huber", "M-estimators", "Linear Regression", "Ridge Regression"]
+5. Ensemble Model Performance with 4 method
+# Ensemble method
+method = {
+    "Method 1": ["Huber", "M-estimators", "Linear Regression", "Ridge Regression"],
+    "Method 2": ["Huber", "M-estimators", "Linear Regression"],
+    "Method 3": ["Huber", "M-estimators", "Ridge Regression"],
+    "Method 4": ["Huber", "M-estimators"]
+}
+
+
+Model Ensembling:
+
+Evaluate on Different Model Ensembling:
+
+Ensemble Model Performance
+
+Permutation Importance
+LASSO Coefficients
+Correlation Coefficient
+SHAP Values
+
+
+
+Model Training and Evaluation
+Hyperparameter Tuning
+Ensemble Model Performance
+3172
+835
+CatBoost regression
+Decision tree regression
+ElasticNet regression
+Gradient boosting regression
+Huber regression
+K-Nearest neighbors regression (KNN)
+Lasso regression
+Linear regression
+M estimators
+Passive aggressive regression
+Random forest (RF) regression
+Ridge regression
+Support vector regression (SVR)
+XGBoost regression

@@ -1,0 +1,73 @@
+Graph Neural Networks (GNNs)
+
+Please summarize the table of performance matrix of the comparative study as comparing the Graph Neural Networks (GNNs) method with current ensemble machine-learning methods (PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4).
+
+Why we have to comparing graph neural networks (Graph Convolutional Network, Graph Attention Network) with current ensemble machine-learning methods(PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4).
+
+
+
+
+To predict yield based on the listed genotype data, weather data, and soil data. If we would like to conduct a comparative study, as comparing graph neural networks with current ensemble machine-learning methods (PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4). Which model chose I select?
+
+
+
+I have the performance metrics of R2 of the 18 machine learning models.  So, I would like to compare graph neural networks with machine learning methods. Can you write a Python script to make a comparison graph of neural networks? 
+
+More detail:
+PEnsemble1 combines "Huber," "M-estimators," "Linear Regression," and "Ridge Regression."
+PEnsemble2 combines "Huber," "M-estimators," and "Linear Regression."
+PEnsemble3 combines "Huber," "M-estimators," and "Ridge Regression."
+PEnsemble4 combines "" and "M-estimators."
+
+To my knowledge, generally speaking.
+
+Deep-learning models outperform common combinations of machine-learning models if we would like to conduct a comparative study, such as comparing graph neural networks with current ensemble machine-learning methods. 
+Can you write a Python script comparing graph neural networks (Graph Convolutional Network, Graph Attention Network) with ensemble machine-learning methods with PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4?
+
+y = data['Seed']  # Target
+
+comparative study as comparing graph neural networks with current ensemble machine-learning methods (PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4)
+
+
+
+Currently, many machine and deep learning methods discuss influencing factors, which can be referred to for comparison.
+
+
+Can you write a Python script comparing graph neural networks with ensemble machine-learning methodswith PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4?
+
+Can we visualize and compare the result in terms of graph neural networks with PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4?
+
+
+Because based on data in attach. I would like to predict yield(seed column) base on 26 features:Cigr_CD,Cire_CD,EVI2_CD, NDRE_CD, NDVI_CD, Cigr_CV, Cire_CV, EVI2_CV, NDRE_CV, NDVI_CV, Maize_high, N, P, K, pH, SoilTemp, SoilHumi, EC, Water feed Per Area (m3/dunam), Uv radiation, Evapotranspiration, Daily rain, Rain rate, Humidity, Wind speed, Temperature
+
+Is it  possible to compare graph neural networks with other metrics like precision, recall, F1 score ? . But my dataset  in attach does not classification tasks. I would like to predict yield(seed column) base on 26 features:Cigr_CD,Cire_CD,EVI2_CD, NDRE_CD, NDVI_CD, Cigr_CV, Cire_CV, EVI2_CV, NDRE_CV, NDVI_CV, Maize_high, N, P, K, pH, SoilTemp, SoilHumi, EC, Water feed Per Area (m3/dunam), Uv radiation, Evapotranspiration, Daily rain, Rain rate, Humidity, Wind speed, Temperature.
+
+
+This script attachment correctly answers the question: "Deep learning models may outperform common combinations of machine learning models. If we would like to conduct a comparative study, such as comparing graph neural networks with current ensemble machine-learning methods (PEnsemble1, PEnsemble2, PEnsemble3, and PEnsemble4)." ?
+
+
+Deep learning models with graph neural networks to predict yield.
+Green Normalized Difference Vegetation Index 
+=  (G ∈ Zn×p)
+(W ∈ Rn×k1 ) 
+(S ∈ Rn×k2 ) 
+
+
+Can we make a Deep neural network structure to predict yield  from
+the input layer takes in 
+1. genotype data(12 vegetation indexes) following:
+1) Chlorophyll Index green (CIgr)
+2) Chlorophyll Index red edge (CIre)
+3) Enhanced Vegetation Index 2 (EVI2)
+4)Green Normalized Difference Vegetation Index (GNDVI)
+5) Modified Chlorophyll absorption Ratio Index 2 (MCRI2)
+6) Modified Triangular Vegetation Index 2 (MTVI2)
+7) Normalized Difference Red Edge (NDRE)
+8) Normalized Difference Vegetation Index (NDVI) 
+9) Normalized Difference Water Index (NDWI)
+10) Optimized Soil-Adjusted Vegetation Index (OSAVI)
+11) Renormalized Difference Vegetation Index (RDVI)
+12) Red–Green–Blue Vegetation Index (RGBVI)
+2. Weather data :
+Water feed Per Area, UV radiation, Evapotranspiration, Daily rain, Rain rate, Humidity, Wind speed, Temperature 
+3. Soil data: N, P, K, pH, SoilTemp, SoilHumi, EC.

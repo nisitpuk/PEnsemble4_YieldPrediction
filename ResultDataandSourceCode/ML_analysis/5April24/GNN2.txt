@@ -1,0 +1,75 @@
+import pandas as pd
+import numpy as np
+import torch
+from torch_geometric.data import Data
+from torch_geometric.loader import DataLoader
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.model_selection import train_test_split
+
+# Load and preprocess data
+data = pd.read_csv('C:/Maize_Chainat_C/45Datapoint_Master/ML_analysis/7Oct_270Dataset/5VI_CD_CV_16ENV_270_01.csv')
+X = data.drop('Seed', axis=1)  # Features
+y = data['Seed']  # Target
+
+# Standardize the features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Create a similarity graph using cosine similarity
+similarity = cosine_similarity(X_scaled)
+edges = np.transpose(np.nonzero(similarity > 0.5))  # Adjust threshold as needed
+
+# Convert to tensor
+edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()
+x = torch.tensor(X_scaled, dtype=torch.float)
+y = torch.tensor(y.values, dtype=torch.float).unsqueeze(1)  # Ensure y is the correct shape
+
+# Create PyTorch Geometric data object
+data = Data(x=x, edge_index=edge_index, y=y)
+
+# Split indices for training and testing
+train_indices, test_indices = train_test_split(np.arange(data.y.size(0)), test_size=0.2, random_state=42)
+
+# Create datasets for given indices
+train_dataset = [Data(x=data.x, edge_index=data.edge_index, y=data.y[i]) for i in train_indices]
+test_dataset = [Data(x=data.x, edge_index=data.edge_index, y=data.y[i]) for i in test_indices]
+
+# DataLoader for batch processing
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=32)
+
+# Define the number of features
+num_node_features = x.size(1)
+
+# Choose the model to train
+model = GCN(num_node_features, 1)  # Assuming regression, set the number of output features to 1
+
+# Initialize the loss function and optimizer
+criterion = torch.nn.MSELoss()  # Use Mean Squared Error Loss for regression
+optimizer = optim.Adam(model.parameters(), lr=0.01)
+
+# Training loop
+for epoch in range(100):  # number of epochs
+    model.train()
+    for batch in train_loader:
+        optimizer.zero_grad()
+        out = model(batch)
+        print("Output shape:", out.shape, "Target shape:", batch.y.shape)
+        loss = criterion(out, batch.y)
+        loss.backward()
+        optimizer.step()
+
+    print(f'Epoch {epoch+1}, Loss: {loss.item()}')
+
+# Evaluation loop
+model.eval()
+total_loss = 0
+with torch.no_grad():
+    for batch in test_loader:
+        out = model(batch)
+        loss = criterion(out, batch.y)
+        total_loss += loss.item()
+
+avg_loss = total_loss / len(test_loader)
+print(f'Average Loss: {avg_loss}')

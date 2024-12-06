@@ -1,0 +1,4 @@
+Plot,Actual Harvesting,Predict_Breeder,Predict_Huber,Predict_Linear Regression,Predict_M-estimators,Predict_PEnsemble 1,Predict_PEnsemble 2,Predict_PEnsemble 3,Predict_PEnsemble 4,Predict_Ridge Regression,Accuracy_Breeder,Accuracy_Huber,Accuracy_Linear Regression,Accuracy_M-estimators,Accuracy_PEnsemble 1,Accuracy_PEnsemble 2,Accuracy_PEnsemble 3,Accuracy_PEnsemble 4,Accuracy_Ridge Regression
+1,"1,314.44",503.19,986.23,998.47,991.44,990.3,990.5,990.61,988.31,999.03,0.38,0.75,0.76,0.75,0.75,0.75,0.75,0.75,0.76
+2,236.92,332.87,258.2,262.01,259.58,259.48,259.45,259.65,258.75,263.05,0.6,0.91,0.89,0.9,0.9,0.9,0.9,0.91,0.89
+3,387.82,342.67,345.22,348.57,346.97,346.36,346.5,346.39,345.92,348.01,0.88,0.89,0.9,0.89,0.89,0.89,0.89,0.89,0.9

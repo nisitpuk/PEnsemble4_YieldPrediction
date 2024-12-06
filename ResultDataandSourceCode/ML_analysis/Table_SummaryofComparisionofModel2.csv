@@ -1,0 +1,15 @@
+﻿Scenario,Machine_Learing_Algorithms,MAE,MSE,RMSE,R2
+CIre_CV_6FE,CatBoost,1.49,3.20,1.79,0.69
+NDVI_CV_6FE,Decision_Tree ,1.36,2.25,1.50,0.78
+CIgr_CV_6FE,ElasticNet,2.65,8.95,2.99,0.13
+CIre_CV_6FE,Gradient_Boosting ,1.24,3.11,1.76,0.70
+CIre_CV_6FE,Huber ,1.45,4.52,2.13,0.56
+NDVI_CV_6FE,KNN,2.71,8.88,2.98,0.13
+NDRE_CD_6FE,Lasso,2.49,7.71,2.78,0.25
+NDRE_CD_6FE,Linear ,1.58,3.77,1.94,0.63
+NDRE_CD_6FE,M-estimators,1.68,4.31,2.08,0.58
+NDRE_CD_16Env,Passive_Aggressive ,1.82,5.35,2.31,0.48
+EVI2_CV_6FE,RF ,1.49,3.76,1.94,0.63
+CIre_CD_6FE,Ridge,1.68,4.60,2.14,0.55
+CIre_CD_6FE,SVR,2.42,7.47,2.73,0.27
+CIre_CV_6FE,XGBoost,1.01,1.51,1.23,0.85

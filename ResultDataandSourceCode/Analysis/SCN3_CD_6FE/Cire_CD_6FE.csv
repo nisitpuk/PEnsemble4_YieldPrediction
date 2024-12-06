@@ -1,0 +1,15 @@
+,Model,Train_MAE,Test_MAE,Train_MSE,Test_MSE,Train_RMSE,Test_RMSE,Train_R2,Test_R2
+0,CatBoost Regression,0.03,1.63,0.00,3.49,0.03,1.87,1.00,0.66
+1,Decision Tree Regression,0.00,2.17,0.00,6.24,0.00,2.50,1.00,0.39
+2,ElasticNet Regression,1.75,2.46,4.32,7.65,2.08,2.77,0.55,0.25
+3,Gradient Boosting Regression,0.04,1.27,0.00,2.21,0.05,1.49,1.00,0.78
+4,Huber Regression,1.07,1.61,1.80,4.17,1.34,2.04,0.81,0.59
+5,K-Nearest Neighbors Regression (KNN),1.89,2.59,5.48,9.37,2.34,3.06,0.43,0.08
+6,Lasso Regression,1.70,2.51,4.09,7.81,2.02,2.79,0.58,0.24
+7,Linear Regression,1.12,1.50,1.72,3.59,1.31,1.90,0.82,0.65
+8,M-estimators,1.07,1.61,1.80,4.17,1.34,2.04,0.81,0.59
+9,Passive Aggressive Regression,1.70,1.64,4.65,5.97,2.16,2.44,0.52,0.42
+10,Random Forest (RF) Regression,0.60,1.74,0.51,3.86,0.72,1.96,0.95,0.62
+11,Ridge Regression,1.18,1.68,1.91,4.60,1.38,2.14,0.80,0.55
+12,Support Vector Regression (SVR),1.61,2.42,5.53,7.47,2.35,2.73,0.43,0.27
+13,XGBoost Regression,0.00,1.15,0.00,1.74,0.00,1.32,1.00,0.83
